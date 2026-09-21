@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFD54F"/>
+      <stop offset="1" stop-color="#F57F17"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#1A1400" stroke-width="2.5">
+    <rect x="31" y="80" width="9" height="20" rx="4.5" fill="url(#gold)"/>
+    <rect x="44" y="80" width="9" height="20" rx="4.5" fill="url(#gold)"/>
+    <rect x="24" y="46" width="36" height="38" rx="12" fill="url(#gold)"/>
+  </g>
+  <path d="M50 56 L67 47" stroke="url(#gold)" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="42" cy="27" r="13" fill="url(#gold)" stroke="#1A1400" stroke-width="2.5"/>
+  <path d="M28 21 l22 -12 l6 11 q-12 8 -19 6 z" fill="#1A1400"/>
+  <rect x="68" y="18" width="44" height="30" rx="7" fill="url(#gold)" stroke="#1A1400" stroke-width="2.5"/>
+  <text x="90" y="39" text-anchor="middle" font-family="Arial, sans-serif" font-weight="900" font-size="17" letter-spacing="0.5" fill="#1A1400">VAR</text>
+</svg>

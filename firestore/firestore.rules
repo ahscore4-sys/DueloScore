@@ -1,0 +1,31 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+        && (get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.role == 'admin'
+            || get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.role == 'super_admin');
+    }
+
+    // Standings are cached by a scheduled Cloud Function and read publicly
+    // by both the admin panel and mobile app.
+    match /standings/{leagueId} {
+      allow read: if true;
+      allow write: if false; // only Cloud Functions write
+    }
+
+    // Coverage matches are fetched by scheduled CF, read by mobile, admin-edited.
+    match /coverage_matches/{matchId} {
+      allow read: if true;
+      allow write: if isAdmin();
+
+      // Event timeline subcollection: written by CF, read by mobile + admin.
+      match /events/{eventId} {
+        allow read: if true;
+        allow write: if isAdmin();
+      }
+    }
+  }
+}
